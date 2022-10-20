@@ -1,13 +1,11 @@
 pipeline {
-    agent {label 'OPENJDK-11'}
-    triggers {
-        pollSCM '30 17 * * *'
-    }
+    agent {label 'LABEL-1'}
+   triggers { pollSCM('* * * * *') }
     stages {
-        stage('pull from vcs') {
+        stage('vcs') {
          steps {
-            git url: 'https://github.com/Qtalha/shopizer.git',
-            branch: 'release' 
+            git url: 'https://github.com/rajujaggu/shopizer.git',
+            branch: 'devoloper' 
            }
         }
         stage("build") {
@@ -15,11 +13,6 @@ pipeline {
                 sh 'mvn package'
             }
         }
-        stage("merge") {
-            steps {
-                sh 'git checkout release'
-                sh 'git merge --no-ff origin/develop'
-            }
-        }
+        
     }
 }
