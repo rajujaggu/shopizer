@@ -1,7 +1,7 @@
 pipeline {
     agent {label 'BUILD1'}
    parameters { 
-    choice(name: 'branch', choices: ['main','devoloper'], description: 'branches')
+    choice(name: 'branch', choices: ['master','devoloper'], description: 'branches')
     string(name: 'build', defaultValue: 'package', description: 'build')
      }
     stages {
