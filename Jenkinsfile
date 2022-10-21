@@ -16,15 +16,15 @@ pipeline {
                 sh "mvn ${params.build}"
             }
         }
+        stage('textprinting'){
+             agent {label 'PRINT'}
+             steps{
+                echo 'Hello World'
+             }
+            
+        }
         
     }
-    agent {label 'PRINT'}
-    stages{
-        stage('textprinting'){
-            steps{
-                echo 'Hello World'
-            }
-        }
-    }
+   
 
 }
